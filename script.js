@@ -24,20 +24,32 @@ generateBtn.addEventListener("click", writePassword);
 // create a loop that runs the number as many times as characters in the password
 // each time the loop runs a random number is generated and a different type of character is selected from the array
 
-console.log ("@")
 
-var arrAlphabet = ("a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z");
-var arrNumbers = ("1","2","3","4","5","6","7","8","9");
-var arrSpecialChar = ("!", "@", "#", "$", "%", "&", "*", "?");
+var alphabetArr = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
+var NumbersArr = ["1","2","3","4","5","6","7","8","9"];
+var SpecialCharArr = ["!", "@", "#", "$", "%", "&", "*", "?"];
+
+var pwLengthNum = 0;
+var charArr = []
+
+console.log (alphabetArr)
 
 
-
-var length = prompt ("Enter your prefered length of password from 8 to 128 characters");
-if (typeof length == "") {
-
-}
 alert ("You will now confim which character types your would like to use in your password. Please answer (y)es or (n)o to the following questions.");
+
+var pwLengthNum = parseInt (prompt ("Enter your prefered length of password from 8 to 128 characters"));
+console.log (pwLengthNum);
+
 var lower = prompt ("Would you like to use lowercase letters in your password? (y)es or (n)o");
+if (lower = "y") {
+ charArr.push (alphabetArr);
+ alert ("Lowercase characters added");
+ console.log (charArr[0]);
+}
+
+
+
+
 var upper = prompt ("Would you like to use uppercase letters in your password? (y)es or (n)o");
 var numeric = prompt ("Would you like to use numeric characters in your password? (y)es or (n)o");
 var special = prompt ("Would you like to use special characters in your password? (y)es or (n)o");
