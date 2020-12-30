@@ -24,21 +24,32 @@ generateBtn.addEventListener("click", writePassword);
 // create a loop that runs the number as many times as characters in the password
 // each time the loop runs a random number is generated and a different type of character is selected from the array
 
+//building an array of arrays of character types based on user preference
+//generate rondom indexes of the array and its nested arrays to select a random character
+//add the random characters to the password
 
 var lowerArr = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
 var upperArr = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
 var numbersArr = ["1","2","3","4","5","6","7","8","9"];
 var specialCharArr = ["!", "@", "#", "$", "%", "&", "*", "?"];
 
-var pwLengthNum = 0;
+var pwLength = 0;
 var charArr = []
 var password = ""
 
 
-// alert ("You will now confim which character types your would like to use in your password. Please answer (y)es or (n)o to the following questions.");
+alert ("We'll help you set up a randomly generated password on your preferences. Please answer the following questions.") 
 
-var pwLengthNum = parseInt (prompt ("Enter your prefered length of password from 8 to 128 characters"));
-console.log (pwLengthNum);
+// var pwLength = parseInt (prompt ("Enter your prefered length of password from 8 to 128 characters");
+// console.log (pwLength);
+
+function lengthAlert (length) {
+  while (length < 8 || length > 128) {
+    var length = parseInt (prompt ("Enter your prefered length of password from 8 to 128 characters"));
+  }
+  return length;
+}
+var pwLength = lengthAlert (pwLength);
 
 var lower = prompt ("Would you like to use lowercase letters in your password? (y)es or (n)o");
 if (lower == "y") {
@@ -74,22 +85,19 @@ alert ("Great! That is all the information we needed to create your password. Cl
 function arrIndexGen (arr) {
  return Math.floor( Math.random () * arr.length);
 }
-var charTypeIndex = arrIndexGen (charArr);
 
 
 //returns a random index of the array inside the array it is called on
 function nestArrIndexGen (arr, arrIndex) {
   return Math.floor( Math.random () * arr[arrIndex].length) ;
 }
-var charIndex = nestArrIndexGen (charArr, charTypeIndex);
 
 
-for (i=0; i < pwLengthNum; i++) {
+for (i=0; i < pwLength; i++) {
   var charTypeIndex =  arrIndexGen (charArr);
   var charIndex = nestArrIndexGen (charArr, charTypeIndex);
   password += charArr [charTypeIndex] [charIndex] ;
 };
-
 console.log (password);
 
 // WHEN prompted for the length of the password
