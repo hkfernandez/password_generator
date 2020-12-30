@@ -38,27 +38,21 @@ var charArr = []
 var password = ""
 
 var lowerPrompt = "Would you like to use lowercase letters in your password? (y)es or (n)o"
+var upperPrompt = "Would you like to use uppercase letters in your password? (y)es or (n)o"
 
 
 alert ("We'll help you set up a randomly generated password on your preferences. Please answer the following questions.") 
 
-// var pwLength = parseInt (prompt ("Enter your prefered length of password from 8 to 128 characters");
-// console.log (pwLength);
-
-function lengthAlert (numLength) {
+// Checks if user entry is in range and is a number
+function lengthValidate (numLength) {
   while (numLength < 8 || numLength > 128 || isNaN (numLength)) {
     var numLength = parseInt (prompt ("Enter your prefered length of password from 8 to 128 characters"));
   }
   return numLength;
 }
-var pwLength = lengthAlert (pwLength);
+var pwLength = lengthValidate (pwLength);
 
-// var lower = prompt ("Would you like to use lowercase letters in your password? (y)es or (n)o");
-// if (lower == "y") {
-//  charArr.push (lowerArr);
-//  alert ("Lowercase characters added");
-//  console.log (charArr);
-// }
+//checks is user entry is a "y" or "n"
 function yesNoValidate (userInput, promptType) {
   while (userInput != "y" && userInput != "n"){
     var userInput = prompt ( promptType );
@@ -66,6 +60,7 @@ function yesNoValidate (userInput, promptType) {
   return userInput;
 }
 
+//if user chooses lowercase characters they are pushed to the array
 var lowerChoice = yesNoValidate (lowerChoice, lowerPrompt);
 if (lowerChoice === "y") {
  charArr.push (lowerArr);
@@ -73,12 +68,19 @@ if (lowerChoice === "y") {
  console.log (charArr);
 }
 
-var lower = prompt ("Would you like to use uppercase letters in your password? (y)es or (n)o");
-if (lower == "y") {
- charArr.push (upperArr)
+var upperChoice = yesNoValidate (upperChoice, upperPrompt);
+if (upperChoice === "y") {
+ charArr.push (upperArr);
  alert ("Uppercase characters added");
  console.log (charArr);
 }
+
+// var lower = prompt ("Would you like to use uppercase letters in your password? (y)es or (n)o");
+// if (lower == "y") {
+//  charArr.push (upperArr)
+//  alert ("Uppercase characters added");
+//  console.log (charArr);
+// }
 
 var lower = prompt ("Would you like to use numbers in your password? (y)es or (n)o");
 if (lower == "y") {
