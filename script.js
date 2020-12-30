@@ -30,9 +30,15 @@ var numPrompt = "Would you like to use numbers in your password? (y)es or (n)o"
 var specialCharPrompt = "Would you like to use special characters in your password? (y)es or (n)o"
 var password = ""
 sessionStatus = "active"
+pwLength = 0
 
-
-
+// function userPromptCancel ( userChoice ) {
+//   if ( userChoice === null ) {
+//     alert ("Session canceled.");
+//     sessionStatus = "inactive";
+//     console.log (sessionStatus);
+// }
+// userPromptCancel ( pwLength ) ;
 
 alert ("We'll help you set up a randomly generated password on your preferences. Please answer the following questions.") 
 
@@ -40,20 +46,22 @@ while (sessionStatus = "active") {
     
   // Checks if user entry for password length is in range and is a number
   function lengthValidate (numLength) {
-    while (numLength < 8 || numLength > 128 || isNaN (numLength)) {
-      if ( numLengthStr === null ) {
-        alert ("Session canceled.");
-        sessionStatus = "inactive";
-        console.log (sessionStatus);
+    while (numLength < 8 || numLength > 128 || isNaN ( numLengthStr)) {
+      var numLengthStr = prompt ("Enter your prefered length of password from 8 to 128 characters");
+      if ( numLengthStr == null ) {
         break;
       }
-      var numLengthStr = prompt ("Enter your prefered length of password from 8 to 128 characters");
       var numLength = parseInt ( numLengthStr ) ;
     }
     return numLength;
   }
   var pwLength = lengthValidate (pwLength);
-  if (sessionStatus="inactive"){
+  console.log (pwLength);
+
+  if ( pwLength === 0 ) {
+    sessionStatus = "inactive";
+    console.log (sessionStatus);
+    alert ( "Session canceled");
     break;
   }
 
@@ -87,7 +95,8 @@ while (sessionStatus = "active") {
   alert ("Special characters added");
   }
   alert ("Great! That is all the information we needed to create your password. Click on the generate password button below.");
-
+  break;
+}
   //returns a random index of the array it is called on
   function arrIndexGen (arr) {
   return Math.floor( Math.random () * arr.length);
@@ -107,4 +116,5 @@ while (sessionStatus = "active") {
   };
   console.log (password);
   sessionStatus = "inactive";
-}
+  console.log (sessionStatus)
+
