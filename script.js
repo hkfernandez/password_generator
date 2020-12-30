@@ -41,28 +41,28 @@ var pwLengthNum = parseInt (prompt ("Enter your prefered length of password from
 console.log (pwLengthNum);
 
 var lower = prompt ("Would you like to use lowercase letters in your password? (y)es or (n)o");
-if (lower = "y") {
+if (lower == "y") {
  charArr.push (lowerArr);
  alert ("Lowercase characters added");
  console.log (charArr);
 }
 
 var lower = prompt ("Would you like to use uppercase letters in your password? (y)es or (n)o");
-if (lower = "y") {
+if (lower == "y") {
  charArr.push (upperArr)
  alert ("Uppercase characters added");
  console.log (charArr);
 }
 
 var lower = prompt ("Would you like to use numbers in your password? (y)es or (n)o");
-if (lower = "y") {
+if (lower == "y") {
  charArr.push (numbersArr)
  alert ("Numbers added");
  console.log (charArr);
 }
 
 var lower = prompt ("Would you like to use special characters in your password? (y)es or (n)o");
-if (lower = "y") {
+if (lower == "y") {
  charArr.push (specialCharArr)
  alert ("Special characters added");
  console.log (charArr);
