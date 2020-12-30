@@ -37,6 +37,8 @@ var pwLength = 0;
 var charArr = []
 var password = ""
 
+var lowerPrompt = "Would you like to use lowercase letters in your password? (y)es or (n)o"
+
 
 alert ("We'll help you set up a randomly generated password on your preferences. Please answer the following questions.") 
 
@@ -51,8 +53,21 @@ function lengthAlert (numLength) {
 }
 var pwLength = lengthAlert (pwLength);
 
-var lower = prompt ("Would you like to use lowercase letters in your password? (y)es or (n)o");
-if (lower == "y") {
+// var lower = prompt ("Would you like to use lowercase letters in your password? (y)es or (n)o");
+// if (lower == "y") {
+//  charArr.push (lowerArr);
+//  alert ("Lowercase characters added");
+//  console.log (charArr);
+// }
+function yesNoValidate (userInput, promptType) {
+  while (userInput != "y" && userInput != "n"){
+    var userInput = prompt ( promptType );
+  }
+  return userInput;
+}
+
+var lowerChoice = yesNoValidate (lowerChoice, lowerPrompt);
+if (lowerChoice === "y") {
  charArr.push (lowerArr);
  alert ("Lowercase characters added");
  console.log (charArr);
