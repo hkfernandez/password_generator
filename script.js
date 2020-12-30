@@ -31,68 +31,80 @@ var specialCharPrompt = "Would you like to use special characters in your passwo
 var password = ""
 sessionStatus = "active"
 
+
+
+
 alert ("We'll help you set up a randomly generated password on your preferences. Please answer the following questions.") 
 
-// Checks if user entry for password length is in range and is a number
-function lengthValidate (numLength) {
-  while (numLength < 8 || numLength > 128 || isNaN (numLength)) {
-    if ( numLengthStr === null ) {
-      alert ("Session canceled.");
-      break;
+while (sessionStatus = "active") {
+    
+  // Checks if user entry for password length is in range and is a number
+  function lengthValidate (numLength) {
+    while (numLength < 8 || numLength > 128 || isNaN (numLength)) {
+      if ( numLengthStr === null ) {
+        alert ("Session canceled.");
+        sessionStatus = "inactive";
+        console.log (sessionStatus);
+        break;
+      }
+      var numLengthStr = prompt ("Enter your prefered length of password from 8 to 128 characters");
+      var numLength = parseInt ( numLengthStr ) ;
     }
-    var numLengthStr = prompt ("Enter your prefered length of password from 8 to 128 characters");
-    var numLength = parseInt ( numLengthStr ) ;
+    return numLength;
   }
-  return numLength;
-}
-var pwLength = lengthValidate (pwLength);
-
-//checks is user entry is a "y" or "n"
-function yesNoValidate (userInput, promptType) {
-  while (userInput != "y" && userInput != "n"){
-    var userInput = prompt ( promptType );
+  var pwLength = lengthValidate (pwLength);
+  if (sessionStatus="inactive"){
+    break;
   }
-  return userInput;
-}
 
-//validates users choices and pushes them to the array
-var lowerChoice = yesNoValidate (lowerChoice, lowerPrompt);
-if (lowerChoice === "y") {
- charArr.push (lowerArr);
- alert ("Lowercase characters added");
-}
-var upperChoice = yesNoValidate (upperChoice, upperPrompt);
-if (upperChoice === "y") {
- charArr.push (upperArr);
- alert ("Uppercase characters added");
-}
-var numChoice = yesNoValidate (numChoice, numPrompt);
-if (numChoice === "y") {
- charArr.push (numbersArr);
- alert ("Numbers added");
-}
-var specialCharChoice = yesNoValidate (specialCharChoice, specialCharPrompt);
-if (numChoice === "y") {
- charArr.push (specialCharArr);
- alert ("Special characters added");
-}
-alert ("Great! That is all the information we needed to create your password. Click on the generate password button below.");
+  //checks is user entry is a "y" or "n"
+  function yesNoValidate (userInput, promptType) {
+    while (userInput != "y" && userInput != "n"){
+      var userInput = prompt ( promptType );
+    }
+    return userInput;
+  }
 
-//returns a random index of the array it is called on
-function arrIndexGen (arr) {
- return Math.floor( Math.random () * arr.length);
+  //validates users choices and pushes them to the array
+  var lowerChoice = yesNoValidate (lowerChoice, lowerPrompt);
+  if (lowerChoice === "y") {
+  charArr.push (lowerArr);
+  alert ("Lowercase characters added");
+  }
+  var upperChoice = yesNoValidate (upperChoice, upperPrompt);
+  if (upperChoice === "y") {
+  charArr.push (upperArr);
+  alert ("Uppercase characters added");
+  }
+  var numChoice = yesNoValidate (numChoice, numPrompt);
+  if (numChoice === "y") {
+  charArr.push (numbersArr);
+  alert ("Numbers added");
+  }
+  var specialCharChoice = yesNoValidate (specialCharChoice, specialCharPrompt);
+  if (numChoice === "y") {
+  charArr.push (specialCharArr);
+  alert ("Special characters added");
+  }
+  alert ("Great! That is all the information we needed to create your password. Click on the generate password button below.");
+
+  //returns a random index of the array it is called on
+  function arrIndexGen (arr) {
+  return Math.floor( Math.random () * arr.length);
+  }
+
+
+  //returns a random index of the array inside the array it is called on
+  function nestArrIndexGen (arr, arrIndex) {
+    return Math.floor( Math.random () * arr[arrIndex].length) ;
+  }
+
+
+  for (i=0; i < pwLength; i++) {
+    var charTypeIndex =  arrIndexGen (charArr);
+    var charIndex = nestArrIndexGen (charArr, charTypeIndex);
+    password += charArr [charTypeIndex] [charIndex] ;
+  };
+  console.log (password);
+  sessionStatus = "inactive";
 }
-
-
-//returns a random index of the array inside the array it is called on
-function nestArrIndexGen (arr, arrIndex) {
-  return Math.floor( Math.random () * arr[arrIndex].length) ;
-}
-
-
-for (i=0; i < pwLength; i++) {
-  var charTypeIndex =  arrIndexGen (charArr);
-  var charIndex = nestArrIndexGen (charArr, charTypeIndex);
-  password += charArr [charTypeIndex] [charIndex] ;
-};
-console.log (password);
