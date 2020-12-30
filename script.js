@@ -29,13 +29,19 @@ var upperPrompt = "Would you like to use uppercase letters in your password? (y)
 var numPrompt = "Would you like to use numbers in your password? (y)es or (n)o"
 var specialCharPrompt = "Would you like to use special characters in your password? (y)es or (n)o"
 var password = ""
+sessionStatus = "active"
 
 alert ("We'll help you set up a randomly generated password on your preferences. Please answer the following questions.") 
 
 // Checks if user entry for password length is in range and is a number
 function lengthValidate (numLength) {
   while (numLength < 8 || numLength > 128 || isNaN (numLength)) {
-    var numLength = parseInt (prompt ("Enter your prefered length of password from 8 to 128 characters"));
+    if ( numLengthStr === null ) {
+      alert ("Session canceled.");
+      break;
+    }
+    var numLengthStr = prompt ("Enter your prefered length of password from 8 to 128 characters");
+    var numLength = parseInt ( numLengthStr ) ;
   }
   return numLength;
 }
