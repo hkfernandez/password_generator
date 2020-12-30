@@ -71,19 +71,26 @@ if (lower = "y") {
 alert ("Great! That is all the information we needed to create your password. Click on the generate password button below.");
 
 //returns a random index of the array it is called on
-function ArrIndexGen (arr) {
+function arrIndexGen (arr) {
  return Math.floor( Math.random () * arr.length);
 }
-var charTypeIndex = ArrIndexGen (charArr);
-console.log (charTypeIndex);
+var charTypeIndex = arrIndexGen (charArr);
+
 
 //returns a random index of the array inside the array it is called on
 function nestArrIndexGen (arr, arrIndex) {
   return Math.floor( Math.random () * arr[arrIndex].length) ;
 }
 var charIndex = nestArrIndexGen (charArr, charTypeIndex);
-console.log (charIndex);
 
+
+for (i=0; i < pwLengthNum; i++) {
+  var charTypeIndex =  arrIndexGen (charArr);
+  var charIndex = nestArrIndexGen (charArr, charTypeIndex);
+  password += charArr [charTypeIndex] [charIndex] ;
+};
+
+console.log (password);
 
 // WHEN prompted for the length of the password
 // THEN I choose a length of at least 8 characters and no more than 128 characters
