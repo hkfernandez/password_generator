@@ -43,11 +43,11 @@ alert ("We'll help you set up a randomly generated password on your preferences.
 // var pwLength = parseInt (prompt ("Enter your prefered length of password from 8 to 128 characters");
 // console.log (pwLength);
 
-function lengthAlert (length) {
-  while (length < 8 || length > 128) {
-    var length = parseInt (prompt ("Enter your prefered length of password from 8 to 128 characters"));
+function lengthAlert (numLength) {
+  while (numLength < 8 || numLength > 128 || isNaN (numLength)) {
+    var numLength = parseInt (prompt ("Enter your prefered length of password from 8 to 128 characters"));
   }
-  return length;
+  return numLength;
 }
 var pwLength = lengthAlert (pwLength);
 
