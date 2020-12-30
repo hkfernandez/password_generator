@@ -39,6 +39,7 @@ var password = ""
 
 var lowerPrompt = "Would you like to use lowercase letters in your password? (y)es or (n)o"
 var upperPrompt = "Would you like to use uppercase letters in your password? (y)es or (n)o"
+var numPrompt = "Would you like to use numbers in your password? (y)es or (n)o"
 
 
 alert ("We'll help you set up a randomly generated password on your preferences. Please answer the following questions.") 
@@ -75,19 +76,19 @@ if (upperChoice === "y") {
  console.log (charArr);
 }
 
-// var lower = prompt ("Would you like to use uppercase letters in your password? (y)es or (n)o");
-// if (lower == "y") {
-//  charArr.push (upperArr)
-//  alert ("Uppercase characters added");
-//  console.log (charArr);
-// }
-
-var lower = prompt ("Would you like to use numbers in your password? (y)es or (n)o");
-if (lower == "y") {
- charArr.push (numbersArr)
+var numChoice = yesNoValidate (numChoice, numPrompt);
+if (numChoice === "y") {
+ charArr.push (numbersArr);
  alert ("Numbers added");
  console.log (charArr);
 }
+
+// var lower = prompt ("Would you like to use numbers in your password? (y)es or (n)o");
+// if (lower == "y") {
+//  charArr.push (numbersArr)
+//  alert ("Numbers added");
+//  console.log (charArr);
+// }
 
 var lower = prompt ("Would you like to use special characters in your password? (y)es or (n)o");
 if (lower == "y") {
