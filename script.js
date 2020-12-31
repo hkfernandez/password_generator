@@ -31,6 +31,7 @@ var specialCharPrompt = "Would you like to use special characters in your passwo
 var password = ""
 sessionStatus = "active"
 pwLength = 0
+sessionCanceledAlert = "Session canceled"
 
 // function userPromptCancel ( userChoice ) {
 //   if ( userChoice === null ) {
@@ -61,7 +62,7 @@ while (sessionStatus = "active") {
   if ( pwLength === 0 ) {
     sessionStatus = "inactive";
     console.log (sessionStatus);
-    alert ( "Session canceled");
+    alert ( sessionCanceledAlert );
     break;
   }
 
@@ -69,16 +70,30 @@ while (sessionStatus = "active") {
   function yesNoValidate (userInput, promptType) {
     while (userInput != "y" && userInput != "n"){
       var userInput = prompt ( promptType );
+      if (userInput = " ") {
+        break;
+      }
     }
-    return userInput;
+    if (userInput === "y" || userInput === "n"){
+      return userInput;
+    } else {
+      return " ";
+    }
   }
 
-  //validates users choices and pushes them to the array
+  //validates users choices and pushes them to the arrays
   var lowerChoice = yesNoValidate (lowerChoice, lowerPrompt);
   if (lowerChoice === "y") {
   charArr.push (lowerArr);
   alert ("Lowercase characters added");
+  } else if (lowerChoice == " ") {
+    sessionStatus = "inactive"
   }
+  if (sessionStatus != "active") {
+    alert (sessionCanceledAlert);
+    break;
+  }
+
   var upperChoice = yesNoValidate (upperChoice, upperPrompt);
   if (upperChoice === "y") {
   charArr.push (upperArr);
