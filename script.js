@@ -57,8 +57,6 @@ while (sessionStatus = "active") {
     return numLength;
   }
   var pwLength = lengthValidate (pwLength);
-  console.log (pwLength);
-
   if ( pwLength === 0 ) {
     sessionStatus = "inactive";
     console.log (sessionStatus);
@@ -70,23 +68,24 @@ while (sessionStatus = "active") {
   function yesNoValidate (userInput, promptType) {
     while (userInput != "y" && userInput != "n"){
       var userInput = prompt ( promptType );
-      if (userInput = " ") {
+      if (userInput == null) {
         break;
       }
     }
-    if (userInput === "y" || userInput === "n"){
+    if (userInput == "y" || userInput == "n"){
+      console.log ("user input" + userInput)
       return userInput;
     } else {
-      return " ";
+      return null;
     }
   }
 
   //validates users choices and pushes them to the arrays
   var lowerChoice = yesNoValidate (lowerChoice, lowerPrompt);
-  if (lowerChoice === "y") {
+  if (lowerChoice == "y") {
   charArr.push (lowerArr);
   alert ("Lowercase characters added");
-  } else if (lowerChoice == " ") {
+  } else if (lowerChoice == null) {
     sessionStatus = "inactive"
   }
   if (sessionStatus != "active") {
@@ -98,17 +97,38 @@ while (sessionStatus = "active") {
   if (upperChoice === "y") {
   charArr.push (upperArr);
   alert ("Uppercase characters added");
+  } else if (upperChoice == null) {
+    sessionStatus = "inactive"
   }
+  if (sessionStatus != "active") {
+    alert (sessionCanceledAlert);
+    break;
+  }
+
   var numChoice = yesNoValidate (numChoice, numPrompt);
   if (numChoice === "y") {
   charArr.push (numbersArr);
   alert ("Numbers added");
+  } else if (numChoice == null) {
+    sessionStatus = "inactive"
   }
+  if (sessionStatus != "active") {
+    alert (sessionCanceledAlert);
+    break;
+  }
+
   var specialCharChoice = yesNoValidate (specialCharChoice, specialCharPrompt);
-  if (numChoice === "y") {
+  if (specialCharChoice=== "y") {
   charArr.push (specialCharArr);
   alert ("Special characters added");
+  } else if (specialCharChoice == null) {
+    sessionStatus = "inactive"
   }
+  if (sessionStatus != "active") {
+    alert (sessionCanceledAlert);
+    break;
+  }
+
   alert ("Great! That is all the information we needed to create your password. Click on the generate password button below.");
   break;
 }
