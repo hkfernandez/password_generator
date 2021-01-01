@@ -6,6 +6,9 @@ function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
 
+  if (password == undefined){
+    return;
+  }
   passwordText.value = password;
 
 }
@@ -112,7 +115,11 @@ function generatePassword () {
   function nestArrIndexGen (arr, arrIndex) {
     return Math.floor( Math.random () * arr[arrIndex].length) ;
   }
-
+  if (charArr[0] == undefined){
+    alert ("You must select a minimum of 1 character type for your password. If you would like to continue creating a password, click on the 'Create Password' button below to enter your preferences.")
+  return;
+  }
+  
   //loops through array of character types and randomly selects characters
   for (i=0; i < pwLength; i++) {
     var charTypeIndex =  arrIndexGen (charArr);
